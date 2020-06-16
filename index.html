@@ -86,7 +86,85 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><strong>目录</strong></p>
+<p>[TOC]</p>
+<hr>
+<h2 id="1-Git安装"><a href="#1-Git安装" class="headerlink" title="1. Git安装"></a>1. Git安装</h2><p><a href="https://git-scm.com/" target="_blank" rel="noopener">官网</a> 下载并安装<br><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">Git官网指导教程中文版</a> 资源  </p>
+<h2 id="2-Git最小配置"><a href="#2-Git最小配置" class="headerlink" title="2. Git最小配置"></a>2. Git最小配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">'**'</span>  </span><br><span class="line">git config --global user.email <span class="string">'**@163.com'</span></span><br></pre></td></tr></table></figure>
+<p>一些常用的查询命令  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --list		    <span class="comment">#列出所有的配置信息</span></span><br><span class="line">git config --list --<span class="built_in">local</span> 	<span class="comment">#对某个仓库的配置信息</span></span><br><span class="line">git config --list --global	<span class="comment">#对当前用户的所有仓库配置</span></span><br><span class="line">git config --list --system	<span class="comment">#对系统登录的所有的用户的仓库配置信息 ,不常用</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3-创建第一个仓库并配置local信息"><a href="#3-创建第一个仓库并配置local信息" class="headerlink" title="3.创建第一个仓库并配置local信息"></a>3.创建第一个仓库并配置local信息</h2><h3 id="3-1-初始化仓库"><a href="#3-1-初始化仓库" class="headerlink" title="3.1 初始化仓库"></a>3.1 初始化仓库</h3><ol>
+<li>将已有的项目文件纳入git管理  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> 项目所在文件夹  </span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure></li>
+<li>利用git新建项目  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init project_name     <span class="comment"># 创建一个和项目名称同名的文件夹  </span></span><br><span class="line">$ <span class="built_in">cd</span> project_name		    <span class="comment"># 开发一定在该路径下</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-2-查看新创建的仓库，并配置local信息"><a href="#3-2-查看新创建的仓库，并配置local信息" class="headerlink" title="3.2 查看新创建的仓库，并配置local信息"></a>3.2 查看新创建的仓库，并配置local信息</h3></li>
+<li>查看是否有 .git文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> project_name   <span class="comment"># 进入项目文件夹  </span></span><br><span class="line">$ ls -al	    <span class="comment"># 显示当前文件夹的所有文件，查看是否有 .git 文件</span></span><br></pre></td></tr></table></figure></li>
+<li>配置local信息, 因为local 配置信息优于global，可以为不同的仓库配置不同信息。  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global --list    <span class="comment"># 列出当前配置信息  </span></span><br><span class="line">$ git config --<span class="built_in">local</span> user.name <span class="string">'YM'</span>  </span><br><span class="line">$ git config --<span class="built_in">local</span> user.email <span class="string">'******@163.com'</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-3-添加-readme-md文件"><a href="#3-3-添加-readme-md文件" class="headerlink" title="3.3 添加 readme.md文件"></a>3.3 添加 readme.md文件</h3></li>
+<li>将readme.md文件复制到当前项目路径下，然后执行下列操作  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.md  </span><br><span class="line">$ git status	<span class="comment">#查看仓库当前状态  </span></span><br><span class="line">$ git commit -m <span class="string">'Add readme.md'</span>     <span class="comment">#提交文件并添加说明 </span></span><br><span class="line">$ git <span class="built_in">log</span>	    <span class="comment"># 查看日志</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="3-4-详解过程"><a href="#3-4-详解过程" class="headerlink" title="3.4 详解过程"></a>3.4 详解过程</h3><ol>
+<li>在工作目录中添加文件</li>
+<li>git add files # 将文件放入到缓存区</li>
+<li>git commit -m’ message’    # 提交文件</li>
+</ol>
+<p><strong>从左向右表示文件操作的基本流程：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">文件状态</th>
+<th align="center">操作</th>
+<th align="center">文件状态</th>
+<th align="center">操作</th>
+<th align="center">文件状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">文件目录</td>
+<td align="center">git add files</td>
+<td align="center">暂存区</td>
+<td align="center">git commit -m ‘message’</td>
+<td align="center">版本历史</td>
+</tr>
+</tbody></table>
+<p><strong>使用技巧</strong></p>
+<ul>
+<li>git status    # 查看状态</li>
+<li>git log        # 查看提交日志  </li>
+<li>git reset HEAD file    # 取消文件进入暂存区</li>
+<li>git add -u        # 将已经跟踪过的文件，修改后的文都提交到暂存区</li>
+<li>git checkout – file    #取消对文件的更改内容</li>
+<li>git reset –hard    # 取消暂存区文件的所有变更</li>
+<li>git mv old_name new_name    # 快捷对暂存区的文件的 重命名  </li>
+</ul>
+<h2 id="4-查看版本历史"><a href="#4-查看版本历史" class="headerlink" title="4.查看版本历史"></a>4.查看版本历史</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline	<span class="comment">#一条线的简约</span></span><br><span class="line">git <span class="built_in">log</span> -n4			<span class="comment"># 查看前四个（以提交的时间顺序）</span></span><br><span class="line">git <span class="built_in">log</span> --all 		<span class="comment"># 所有分支的提交版本</span></span><br><span class="line">git <span class="built_in">log</span> --graph	    <span class="comment"># 图形化提交历史</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="5-gitk图形化界面"><a href="#5-gitk图形化界面" class="headerlink" title="5.gitk图形化界面"></a>5.gitk图形化界面</h2><ul>
+<li>待更新</li>
+</ul>
+<h2 id="6-增加远程库出现的问题"><a href="#6-增加远程库出现的问题" class="headerlink" title="6.增加远程库出现的问题"></a>6.增加远程库出现的问题</h2><p>目标：在远程创建了一个库，并在远程修改、提交了readme文档。<br>而在本地我初始化了一个仓库，并准备关联到远程，提交本地文档。</p>
+<p>操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m<span class="string">"add file"</span></span><br><span class="line">git remote add origin http:***</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>问题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br><span class="line"></span><br><span class="line">To https://gitee.com/codewei/FFT.git</span><br><span class="line"></span><br><span class="line"> ! [rejected]        master -&gt; master (fetch first)</span><br><span class="line"></span><br><span class="line">error: failed to push some refs to </span><br><span class="line"><span class="string">'https://gitee.com/codewei/FFT.git'</span></span><br><span class="line"></span><br><span class="line">hint: Updates were rejected because the remote </span><br><span class="line">contains work that you <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">hint: not have locally. This is usually caused by </span><br><span class="line">another repository pushing</span><br><span class="line"></span><br><span class="line">hint: to the same ref. You may want to first </span><br><span class="line">integrate the remote changes</span><br><span class="line"></span><br><span class="line">hint: (e.g., <span class="string">'git pull ...'</span>) before pushing again.</span><br><span class="line"></span><br><span class="line">hint: See the <span class="string">'Note about fast-forwards'</span> <span class="keyword">in</span> <span class="string">'git </span></span><br><span class="line"><span class="string">push --help'</span> <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
+
+<p>原因：<br>之所以出现问题，是因为在远程生成、编辑Readme文档，而本地代码文件并没有该文档，故远程和本地就对不上</p>
+<p>解决：</p>
+<h3 id="将线上和线下进行合并"><a href="#将线上和线下进行合并" class="headerlink" title="将线上和线下进行合并"></a>将线上和线下进行合并</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin master</span><br></pre></td></tr></table></figure>
+<h3 id="之后在进行push"><a href="#之后在进行push" class="headerlink" title="之后在进行push"></a>之后在进行push</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br><span class="line"></span><br><span class="line">Enumerating objects: 4, done.</span><br><span class="line"></span><br><span class="line">Counting objects: 100% (4&#x2F;4), done.</span><br><span class="line"></span><br><span class="line">Delta compression using up to 4 threads</span><br><span class="line"></span><br><span class="line">Compressing objects: 100% (3&#x2F;3), done.</span><br><span class="line"></span><br><span class="line">Writing objects: 100% (3&#x2F;3), 946 bytes | 946.00 </span><br><span class="line">KiB&#x2F;s, done.</span><br><span class="line"></span><br><span class="line">Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line"></span><br><span class="line">remote: Powered by GITEE.COM [GNK-5.0]</span><br><span class="line"></span><br><span class="line">To https:&#x2F;&#x2F;gitee.com&#x2F;codewei&#x2F;FFT.git</span><br><span class="line"></span><br><span class="line">   0ac2191..acebf30  master -&gt; master</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://i.loli.net/2020/03/10/SUhjKYrs7aLo2pt.jpg" alt=""><br><em>欢迎关注转发收藏</em></p>
+
       
     </div>
     <footer class="article-footer">
